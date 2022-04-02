@@ -5,9 +5,9 @@ The structure and content of this repo is the following:
 
 ### 1. Sampling and quantation
 
-    Basic concepts of sampling and quantification of continuous signals. For this purpose, the following           data are provided in a .mat file:
-      - The amplitude of a signal x(t) (vector x) sampled as a function of time (vector t)
-      - The amplitude of a  signal k(t) (vector k) sampled as a function of time (vector t_k) 
+  Basic concepts of sampling and quantification of continuous signals. For this purpose, the following           data are provided in a .mat file:
+  - The amplitude of a signal x(t) (vector x) sampled as a function of time (vector t)
+  - The amplitude of a  signal k(t) (vector k) sampled as a function of time (vector t_k) 
       
 ### 2. Uniform and non-uniform quantitation
 
