@@ -11,7 +11,11 @@ The structure and content of this repo is the following:
       
 ### 2. Uniform and non-uniform quantitation
 
-      dxfdgnh 
+ The quantification process is necessary in the transition from continuous signals to discrete signals in finite-precision systems.
+finite-precision systems, which allows the signals to be stored, transmitted or processed digitally.
+digital form. In this practice we are going to work with two types of quantization (uniform and non-uniform) and analyze the results obtained from the application of two types of quantization.
+and non-uniform) and to analyze the results obtained by applying each of them to the same signal.
+For this purpose, an audio file is provided. 
 ### 3. Changing the sampling rate
 
 ### 4. Digital FIR filters
