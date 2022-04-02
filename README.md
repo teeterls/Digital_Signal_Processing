@@ -1,6 +1,6 @@
 # Digital_Signal_Processing
 
-Basic Digital Signal Processing codes in Matlab. In this repo, several DSP projects can be found in different folders, each one including the executable file-m) (main and every extra file needed (audio files .WAV or data container files .mat)
+Basic Digital Signal Processing codes in Matlab. In this repo, several DSP projects can be found in different folders, each one including the executable file (main.m) and every extra file needed (audio files .WAV or data container files .mat)
 The structure and content of this repo is the following:
 
 ### 1. Sampling and quantation
@@ -11,12 +11,12 @@ The structure and content of this repo is the following:
       
 ### 2. Uniform and non-uniform quantitation
 
- The quantification process is necessary in the transition from continuous signals to discrete signals in finite-precision systems.
-finite-precision systems, which allows the signals to be stored, transmitted or processed digitally.
-digital form. In this practice we are going to work with two types of quantization (uniform and non-uniform) and analyze the results obtained from the application of two types of quantization.
-and non-uniform) and to analyze the results obtained by applying each of them to the same signal.
-For this purpose, an audio file is provided. 
-### 3. Changing the sampling rate
+Work with two types of quantization (uniform and non-uniform) and analyze the results obtained by applying each of them to the same signal, so differences among types can be noted. For this purpose, an audio file is provided. 
+
+### 3. Changing the sampling frequency
+
+Work with different techniques (decimation, interpolation by an integer factor, or frequency changing by a rational factor) to change the frequency of
+sampling of a signal, in the discrete domain, without changing to the analog domain. For this purpose, an audio file .WAV and a low pass filter (.mat file) are provided. 
 
 ### 4. Digital FIR filters
 ### 5. Digital IIR filters
