@@ -24,11 +24,28 @@ Different techniques will be used (superposition, filter order) to apply FIR fil
 - The amplitude of the signal x(t) (vector x) sampled as a function of the time (vector t)
 - The coefficients bk(vector b) of an FIR filter already design by the professor
 
-Morover, a FIR filter will be designed using a Matlab graphic tool (Filter Design & Analysis Tool)
+Moreover, a FIR filter will be designed using a Matlab graphic tool (Filter Design & Analysis Tool)
+
 ### 5. Digital IIR filters
+
+Various IIR filters (different low and high pass) will be designed using a Matlab graphic tool (Filter Design & Analysis Tool). For that purpose, values of the needed parameters are provided.
+
+Moreover, the characteristics from their frequency responses and their pole-zero plots will be analyzed (module and phase, estability).
 
 ### 6. Effects of finite precision on the design of digital filters
 
+Study the effects that occur due to the fact that the numbers used
+in the implementation of digital IIR filters (coefficients and samples) are quantified when working with them
+with a finite precision microprocessor. For this purpose, the values of the parameters of the IIR filter  are provided. 
+
 ### 7. Implementation of LTI filters using DFT
+
+A provided audio signal is going to be filtered using the Discrete Fourier Transform
+(DFT) by the overlap-store method. 
+This method is explained in the following figure (in Spanish):
+
+![image](https://user-images.githubusercontent.com/46919127/161384234-b57d8b1c-ba2c-4937-a852-8ad74d24874a.png)
+
+For this purpose, a FIR filter (Constrained Equiripple) is designed using the values of the parameters provided.
 
 ### 8. Adaptive filtering using the LMS algorithms
