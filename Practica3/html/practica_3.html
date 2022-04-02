@@ -1,0 +1,175 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Pr&aacute;ctica 3</title><meta name="generator" content="MATLAB 9.7"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-02-22"><meta name="DC.source" content="practica_3.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Pr&aacute;ctica 3</h1><!--introduction--><p>Teresa Gonz&aacute;lez y Miguel Oleo &Ntilde; &oacute;</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Diezmado por un factor entero</a></li><li><a href="#2">Apartado a)</a></li><li><a href="#3">Apartado b)</a></li><li><a href="#4">Apartado c)</a></li><li><a href="#5">Apartado d y e)</a></li><li><a href="#6">Apartao f)</a></li></ul></div><h2 id="1">Diezmado por un factor entero</h2><h2 id="2">Apartado a)</h2><pre class="codeinput">[Xn, fs] = audioread(<span class="string">'PDS_P3_LE1_G3.wav'</span>);
+sound(Xn,fs);
+</pre><h2 id="3">Apartado b)</h2><pre class="codeinput">dt = 1/fs;
+t= 0:dt:((length(Xn)-1)/fs);
+figure();
+plot(t,Xn)
+title(<span class="string">'Se&ntilde;al de audio original'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+ylabel(<span class="string">'Xn(t)'</span>)
+</pre><img vspace="5" hspace="5" src="practica_3_01.png" alt=""> <h2 id="4">Apartado c)</h2><pre class="codeinput">Yn = Xn;
+index1 = find(t &lt;= 0.1423);
+index2 = find(t &gt;= 3.43);
+Yn(index1)=0;
+Yn(index2)=0;
+
+figure;
+plot(t,Yn)
+title(<span class="string">'Se&ntilde;al limpiada Yn'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+ylabel(<span class="string">'Yn(t)'</span>)
+</pre><img vspace="5" hspace="5" src="practica_3_02.png" alt=""> <h2 id="5">Apartado d y e)</h2><pre class="codeinput">M = 2;
+Gn = Diezmador(M,Yn);
+fs_g = fs/M;
+dt2 = 1/fs_g;
+t_g= 0:dt2:((length(Gn)-1)/fs_g);
+figure()
+plot(t_g,Gn)
+title(<span class="string">'Yn diezmada con M=2'</span>)
+ylabel(<span class="string">'Gn(t)'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+</pre><img vspace="5" hspace="5" src="practica_3_03.png" alt=""> <h2 id="6">Apartao f)</h2><pre class="codeinput">vect_1 = 18000:18100;
+vect_2 = (18000/M):(18100/M);
+
+figure()
+plot(t(vect_1),Yn(vect_1),<span class="string">'-o'</span>,<span class="string">'MarkerSize'</span>,10)
+hold <span class="string">on</span>
+plot(t_g(vect_2),Gn(vect_2),<span class="string">'-*'</span>,<span class="string">'MarkerSize'</span>,10)
+title(<span class="string">'Comprobaci&oacute;n diezmado'</span>);
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+ylabel(<span class="string">'Amplitud'</span>)
+legend(<span class="string">'Se&ntilde;al original'</span>,<span class="string">'Se&ntilde;al diezmada por M'</span>)
+</pre><img vspace="5" hspace="5" src="practica_3_04.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Práctica 3
+% 
+% Teresa González y Miguel Oleo
+% Ñ ó
+% 
+%% Diezmado por un factor entero
+%% Apartado a)
+
+[Xn, fs] = audioread('PDS_P3_LE1_G3.wav');
+sound(Xn,fs);
+
+%% Apartado b)
+
+dt = 1/fs;
+t= 0:dt:((length(Xn)-1)/fs);
+figure();
+plot(t,Xn)
+title('Señal de audio original')
+xlabel('Tiempo en segundos')
+ylabel('Xn(t)')
+
+%% Apartado c)
+
+Yn = Xn;
+index1 = find(t <= 0.1423);
+index2 = find(t >= 3.43);
+Yn(index1)=0;
+Yn(index2)=0;
+
+figure;
+plot(t,Yn)
+title('Señal limpiada Yn')
+xlabel('Tiempo en segundos')
+ylabel('Yn(t)')
+
+%% Apartado d y e)
+
+M = 2;
+Gn = Diezmador(M,Yn);
+fs_g = fs/M;
+dt2 = 1/fs_g;
+t_g= 0:dt2:((length(Gn)-1)/fs_g);
+figure()
+plot(t_g,Gn)
+title('Yn diezmada con M=2')
+ylabel('Gn(t)')
+xlabel('Tiempo en segundos')
+
+%% Apartao f)
+
+vect_1 = 18000:18100;
+vect_2 = (18000/M):(18100/M);
+
+figure()
+plot(t(vect_1),Yn(vect_1),'-o','MarkerSize',10)
+hold on
+plot(t_g(vect_2),Gn(vect_2),'-*','MarkerSize',10)
+title('Comprobación diezmado');
+xlabel('Tiempo en segundos')
+ylabel('Amplitud')
+legend('Señal original','Señal diezmada por M')
+
+##### SOURCE END #####
+--></body></html>

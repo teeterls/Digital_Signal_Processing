@@ -1,0 +1,535 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Pr&aacute;ctica 2</title><meta name="generator" content="MATLAB 9.7"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-02-22"><meta name="DC.source" content="practica2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Pr&aacute;ctica 2</h1><!--introduction--><p>Teresa Gonz&aacute;lez y Miguel Oleo</p><p>En esta pr&aacute;ctica vamos a poner en pr&aacute;ctica los conceptos de cuantificaci&oacute;n uniforme y no uniforme. Para ello vamos a trabajar con un fichero de audio y aplicaremos los dos tipos de cuantificaci&oacute;n y veremos las diferencias que presentan y como se implementan por software.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Conceptos de las se&ntilde;ales de audio</a></li><li><a href="#2">Apartado a)</a></li><li><a href="#3">Apartado b)</a></li><li><a href="#4">Apartado c)</a></li><li><a href="#5">Apartado d)</a></li><li><a href="#6">Apartado e)</a></li><li><a href="#7">Apartado f)</a></li><li><a href="#8">Apartado g)</a></li><li><a href="#9">Apartado h)</a></li><li><a href="#10">Apartado i)</a></li><li><a href="#11">Apartado j)</a></li><li><a href="#12">Cuantificaci&oacute;n uniforme</a></li><li><a href="#13">Apartado a)</a></li><li><a href="#14">Apartado b)</a></li><li><a href="#15">Cuantificaci&oacute;n no uniforme</a></li><li><a href="#16">Apartado a, b y c)</a></li><li><a href="#17">Apartado d)</a></li><li><a href="#18">Analisis resultados</a></li><li><a href="#19">Apartado a)</a></li><li><a href="#20">Apartado b)</a></li><li><a href="#21">Apartado c)</a></li></ul></div><h2 id="1">Conceptos de las se&ntilde;ales de audio</h2><h2 id="2">Apartado a)</h2><pre class="codeinput">[Xn, fs] = audioread(<span class="string">'PDS_P3_LE1_G3.wav'</span>);
+sound(Xn,fs);
+</pre><h2 id="3">Apartado b)</h2><p>Creamos el vector de tiempos, empezando en 0 y representamos la se&ntilde;al Xn</p><pre class="codeinput">dt = 1/fs;
+t= 0:dt:((length(Xn)-1)/fs);
+figure();
+plot(t,Xn)
+title(<span class="string">'Se&ntilde;al de audio original'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+ylabel(<span class="string">'Xn(t)'</span>)
+</pre><img vspace="5" hspace="5" src="practica2_01.png" alt=""> <h2 id="4">Apartado c)</h2><p>La se&ntilde;al es sim&eacute;trica, con respecto a 0. Adem&aacute;s, la gran mayor&iacute;a de puntos se encuentran concentrados en torno al valor medio de la se&ntilde;al (que es aproximadamente 0)</p><h2 id="5">Apartado d)</h2><p>A partir de la gr&aacute;fica del apartado b), podemos observar que al principio y al final, no hay se&ntilde;al (solo ruido). Para quitarlo, procedemos a poner los valores de Xn(t) anteriores a 0.14 segundos a 0, y lo mismo con los tiempos posteriores a 3.43.</p><pre class="codeinput">Yn = Xn;
+index1 = find(t &lt;= 0.1423);
+index2 = find(t &gt;= 3.43);
+Yn(index1)=0;
+Yn(index2)=0;
+
+figure;
+plot(t,Yn)
+title(<span class="string">'Se&ntilde;al limpiada Yn'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+ylabel(<span class="string">'Yn(t)'</span>)
+</pre><img vspace="5" hspace="5" src="practica2_02.png" alt=""> <h2 id="6">Apartado e)</h2><p>Calculamos la transformada de Fourier de la se&ntilde;al anterior y representamos su espectro en el margen de frecuencias de interes.</p><pre class="codeinput">Yf = (fft(Yn,length(Yn)))/length(Yn);
+f_y = linspace(-fs/2,fs/2,length(Yn));
+figure();
+plot(f_y/1000,fftshift(abs(Yf)));
+title(<span class="string">'Transformada de Fourier de Yn'</span>)
+xlabel(<span class="string">'Frecuencia en KHz'</span>)
+ylabel(<span class="string">'|Yn(f)|'</span>)
+</pre><img vspace="5" hspace="5" src="practica2_03.png" alt=""> <h2 id="7">Apartado f)</h2><p>Como se puede observar en la transformada de Fourier, la mayores amplitudes se encuentran en frecuencias pr&oacute;ximas a cero. Por ello, es donde m&aacute;s energ&iacute;a se concentra.</p><p>Es una representaci&oacute;n que no muestra la energ&iacute;a que contienen los arm&oacute;nicos seg&uacute;n va variando la se&ntilde;al. Debido a esto, recomendamos representarla mediante un espectrograma, ya que muestra lo anterior.</p><h2 id="8">Apartado g)</h2><p>Representamos un histograma que muestre los valores de amplitud de cada muestra de la se&ntilde;al Yn.</p><p>Viendo esta gr&aacute;fica, se reafirma que la mayor parte de muestras, tienen amplitud cercana a cero.</p><pre class="codeinput">figure()
+histogram(Yn,100);
+title(<span class="string">'Histograma de Yn'</span>)
+xlabel(<span class="string">'Amplitud divida en rangos'</span>)
+ylabel(<span class="string">'Frecuencia estad&iacute;stica'</span>)
+</pre><img vspace="5" hspace="5" src="practica2_04.png" alt=""> <h2 id="9">Apartado h)</h2><p>Representaci&oacute;n en diagrama de cajas de la se&ntilde;al limpiada (Yn). Se puede observar que el rango intercuart&iacute;lico no es muy amplio, por lo que volvemos, otra vez, a verificar que la gran mayor&iacute;a de muestr&aacute;s est&aacute;n muy concentradas en torno a la mediana. La media y mediana se puede observar que es pr&oacute;ximo a cero. Tambi&eacute;n cabe destacar que se muestran muchos datos at&iacute;picos.</p><pre class="codeinput">figure()
+boxplot(Yn);
+title(<span class="string">'Boxplot de Yn'</span>)
+ylabel(<span class="string">'Amplitud'</span>)
+</pre><img vspace="5" hspace="5" src="practica2_05.png" alt=""> <h2 id="10">Apartado i)</h2><p>A continuaci&oacute;n se muestran los datos estad&iacute;sticos m&aacute;s relevantes:</p><pre class="codeinput">disp(<span class="string">'Media de Yn: '</span>)
+media = mean(Yn)
+
+disp(<span class="string">'Mediana de Yn: '</span>)
+mediana = median(Yn)
+
+disp(<span class="string">'Desviaci&oacute;n t&iacute;pica de Yn: '</span>)
+desv_tip = std(Yn)
+</pre><pre class="codeoutput">Media de Yn: 
+
+media =
+
+  -4.7867e-05
+
+Mediana de Yn: 
+
+mediana =
+
+     0
+
+Desviaci&oacute;n t&iacute;pica de Yn: 
+
+desv_tip =
+
+    0.1251
+
+</pre><h2 id="11">Apartado j)</h2><p>La gran mayoria de datos est&aacute;n muy concentrados respescto de la media (aprox cero). Esto confirma que la gran mayor&iacute;a de las muest&aacute;s tienen una amplitud peque&ntilde;a.</p><h2 id="12">Cuantificaci&oacute;n uniforme</h2><h2 id="13">Apartado a)</h2><p>Aplicamos el cuantificador, tal y como lo hicimos en la pr&aacute;cctica anterior.</p><pre class="codeinput">q1 = quantizer(<span class="string">'fixed'</span>,<span class="string">'round'</span>,<span class="string">'saturate'</span>,[7,5]);
+Yq = num2bin(q1,Yn);
+figure();
+plot(t,bin2num(q1,Yq))
+title(<span class="string">'Yn cuantificada uniformemente'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+ylabel(<span class="string">'Yq(t)'</span>)
+</pre><img vspace="5" hspace="5" src="practica2_06.png" alt=""> <h2 id="14">Apartado b)</h2><p>Hemos escogido 5 bits decimales, uno entero y otro de signo (ya que la se&ntilde;al va de -1 a 1, por lo que nos hace falta el signo y un digito entero)</p><h2 id="15">Cuantificaci&oacute;n no uniforme</h2><p>Utilizamos cuantificaci&oacute;n no uniforme para mejorar la precisi&oacute;n de nuestra se&ntilde;al cuantificada, ya que en amplitudes peque&ntilde;as (la gran mayor&iacute;a de nuestra se&ntilde;al)los intervalos de cuantificaci&oacute;n se hacen m&aacute;s estrechos para amplitudes bajas.</p><pre class="codeinput">A = 87.6;
+</pre><h2 id="16">Apartado a, b y c)</h2><p>Hemos implementado el compresor y expansor en una funci&oacute;n de Matlab aparte. Como argumentos de entrada recibe primero A (que la hemos fijado anteriormente en el "main") y luego recibe la se&ntilde;al que queremos comprimir. En el expansor, tiene los mismos arguumentos que el compresor.</p><p>Para caracterizar estos bloques y apreciar mejor su funcionamiento, creamos un vector de -1:1 y se los pasamos a las funciones. En los plots, se puede ver como en el expansor, las amplitudes cercanas a 0 (eje y), acaparan m&aacute;s rango de amplitud. Sin embargo, el expansor hace todo lo contario, los valores pr&oacute;ximos a cero abarcan muy poco rango de amplitud.</p><p>Por &uacute;ltimo se muestra un subplot con la se&ntilde;al original y la se&ntilde;al comprimida y expandida. En esta gr&aacute;fica se puede observar con m&aacute;s facilidad, c&oacute;mo las amplitudes peque&ntilde;as de la se&ntilde;al original, en el compresor, se han expandido, y en el expansor se han comprimido.</p><p>Los nombres de estos bloques pueden ser algo liosos, pero las gr&aacute;ficas muestran fielmente su funcionamiento.</p><pre class="codeinput">vect = linspace(-1,1,length(t));
+figure()
+subplot(2,1,1)
+plot(t,compresor(A,vect));
+title(<span class="string">'Compresor vector -1:1'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+ylabel(<span class="string">'Amplitud'</span>)
+subplot(2,1,2)
+plot(t,expansor(A,vect));
+title(<span class="string">'Expansor vector -1:1'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+ylabel(<span class="string">'Amplitud'</span>)
+
+figure()
+subplot(3,1,1)
+plot(t,Yn);
+title(<span class="string">'Se&ntilde;al original Yn'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+ylabel(<span class="string">'Yn(t)'</span>)
+subplot(3,1,2)
+plot(t,compresor(A,Yn));
+title(<span class="string">'Compresor se&ntilde;al Yn'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+ylabel(<span class="string">'Yn(t) comprimida'</span>)
+subplot(3,1,3)
+plot(t,expansor(A,Yn));
+title(<span class="string">'Expansor se&ntilde;al Yn'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+ylabel(<span class="string">'Yn(t) expandida'</span>)
+</pre><img vspace="5" hspace="5" src="practica2_07.png" alt=""> <img vspace="5" hspace="5" src="practica2_08.png" alt=""> <h2 id="17">Apartado d)</h2><p>Para cuantificar no uniformemente, primero pasamos la se&ntilde;al por el compresor, luego por el cuantificador uniforme y, por &uacute;ltimo, por el expansor.</p><pre class="codeinput">Ycomp = compresor(A,Yn);
+Ycuant = bin2num(q1,num2bin(q1,Ycomp));
+Ynuni = expansor(A,Ycuant);
+figure();
+plot(t,Ynuni);
+title(<span class="string">'Cuantificaci&oacute;n no unfirme'</span>)
+ylabel(<span class="string">'Ynuni(t)'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+</pre><img vspace="5" hspace="5" src="practica2_09.png" alt=""> <img vspace="5" hspace="5" src="practica2_10.png" alt=""> <h2 id="18">Analisis resultados</h2><h2 id="19">Apartado a)</h2><p>Reproducimos las tres se&ntilde;ales y podemos observar, que al cuantificar, se introduce un leve ruido de fondo (ruido de cuantificaci&oacute;n). La se&ntilde;al cuantificada no uniformemente, es levemente m&aacute;s fiel a la se&ntilde;al original (se escucha menos ruido).</p><pre class="codeinput">Yuni = bin2num(q1,Yq);
+sound(Yn,fs);
+sound(Yuni,fs);
+sound(Ynuni,fs);
+</pre><h2 id="20">Apartado b)</h2><p>En la primera gr&aacute;fica, hemos representado las tres se&ntilde;ales por separado. Debido a esto, no se puede apreciar mucha diferencia hasta que no hacemos zoom. Por ello, en la siguiente gr&aacute;fica hemos representado un pequ&ntilde;o segmento de las se&ntilde;ales y las hemos superpuesto. En esta &uacute;ltima gr&aacute;fica se puede apreciar muiy bien como funcionan los distintos codificadores. Es muy visible como el codificador uniforme no es capaz de distinguir niveles de amplitud peque&ntilde;os, mientras que el no uniforme si los cuantifica con m&aacute;s precisi&oacute;n.</p><p>Por &uacute;ltimo, la tercera gr&aacute;fica es la misma que la segunda pero con una secci&oacute;n de se&ntilde;al con mayor amplitud. En esta, se puede observar como el detalle que se consigue al cuantificar entre no uniforme y uniforme en amplitudes mas altas, es similar.</p><pre class="codeinput">figure();
+subplot(3,1,1)
+plot(t,Yn)
+title(<span class="string">'Se&ntilde;al original Yn'</span>)
+xlabel(<span class="string">'Tiempo en segundo'</span>)
+ylabel(<span class="string">'Yn(t)'</span>)
+subplot(3,1,2)
+plot(t,Yuni)
+title(<span class="string">'Se&ntilde;al cuantificada uniformemente Yuni'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+ylabel(<span class="string">'Yuni(t)'</span>)
+subplot(3,1,3)
+plot(t,Ynuni)
+title(<span class="string">'Se&ntilde;al cuantificada no uniformemente Ynuni'</span>)
+xlabel(<span class="string">'Tiempo en segundos'</span>)
+ylabel(<span class="string">'Ynuni(t)'</span>)
+
+figure()
+plot(t(14000:15000),Yn(14000:15000))
+title(<span class="string">'Comparativa amplitudes peque&ntilde;as'</span>)
+xlabel(<span class="string">'tiempo en segundos'</span>)
+ylabel(<span class="string">'Amplitud'</span>)
+hold <span class="string">on</span>
+plot(t(14000:15000),Yuni(14000:15000))
+hold <span class="string">on</span>
+plot(t(14000:15000),Ynuni(14000:15000))
+legend(<span class="string">'Original'</span>,<span class="string">'Cuant. uniforme'</span>,<span class="string">'Cuant. no uniforme'</span>)
+
+figure()
+plot(t(18000:20000),Yn(18000:20000))
+title(<span class="string">'Comparativa amplitudes grandes'</span>)
+xlabel(<span class="string">'tiempo en segundos'</span>)
+ylabel(<span class="string">'Amplitud'</span>)
+hold <span class="string">on</span>
+plot(t(18000:20000),Yuni(18000:20000))
+hold <span class="string">on</span>
+plot(t(18000:20000),Ynuni(18000:20000))
+legend(<span class="string">'Original'</span>,<span class="string">'Cuant. uniforme'</span>,<span class="string">'Cuant. no uniforme'</span>)
+</pre><img vspace="5" hspace="5" src="practica2_11.png" alt=""> <img vspace="5" hspace="5" src="practica2_12.png" alt=""> <img vspace="5" hspace="5" src="practica2_13.png" alt=""> <img vspace="5" hspace="5" src="practica2_14.png" alt=""> <h2 id="21">Apartado c)</h2><p>A continuaci&oacute;n mostramos los resultados del error cuadr&aacute;tico medio de las se&ntilde;ales cuantifiacas respecto de la se&ntilde;al original.</p><p>Como nos esper&aacute;bamos, la cuantificaci&oacute;n no uniforme presenta una mejora en t&eacute;rminos de error cuadr&aacute;tico medio. Concuerda con nuestra intuici&oacute;n, ya que nos parec&iacute;a que se escuchaba mejor la se&ntilde;al cuantificada no uniformemente. Tambi&eacute;n concuerda con las gr&aacute;ficas anteriores en las que se puede apreciar que la cuantificaci&oacute;n no uniforme es capar de representar mejor la se&ntilde;al original en comparaci&oacute;n con la uniforme</p><pre class="codeinput">disp(<span class="string">'ECM con la se&ntilde;al Uniformemente cuantificada'</span>)
+disp(ECM(Yn,Yuni))
+
+disp(<span class="string">'ECM con la se&ntilde;al no uniformemente cuantificada'</span>)
+disp(ECM(Yn,Ynuni))
+</pre><pre class="codeoutput">ECM con la se&ntilde;al Uniformemente cuantificada
+   5.3038e-05
+
+ECM con la se&ntilde;al no uniformemente cuantificada
+   3.8466e-05
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Práctica 2
+% 
+% Teresa González y Miguel Oleo
+% 
+% 
+% En esta práctica vamos a poner en práctica los conceptos de
+% cuantificación uniforme y no uniforme. Para ello vamos a trabajar con un
+% fichero de audio y aplicaremos los dos tipos de cuantificación y veremos
+% las diferencias que presentan y como se implementan por software.
+% 
+%% Conceptos de las señales de audio
+% 
+%% Apartado a)
+[Xn, fs] = audioread('PDS_P3_LE1_G3.wav');
+sound(Xn,fs);
+
+%% Apartado b)
+% 
+% Creamos el vector de tiempos, empezando en 0 y representamos la señal Xn
+dt = 1/fs;
+t= 0:dt:((length(Xn)-1)/fs);
+figure();
+plot(t,Xn)
+title('Señal de audio original')
+xlabel('Tiempo en segundos')
+ylabel('Xn(t)')
+
+%% Apartado c)
+% 
+% La señal es simétrica, con respecto a 0. Además, la gran mayoría de
+% puntos se encuentran concentrados en torno al valor medio de la señal
+% (que es aproximadamente 0)
+
+%% Apartado d)
+% 
+% A partir de la gráfica del apartado b), podemos observar que al principio
+% y al final, no hay señal (solo ruido). Para quitarlo, procedemos a poner
+% los valores de Xn(t) anteriores a 0.14 segundos a 0, y lo mismo con los tiempos
+% posteriores a 3.43.
+
+Yn = Xn;
+index1 = find(t <= 0.1423);
+index2 = find(t >= 3.43);
+Yn(index1)=0;
+Yn(index2)=0;
+
+figure;
+plot(t,Yn)
+title('Señal limpiada Yn')
+xlabel('Tiempo en segundos')
+ylabel('Yn(t)')
+
+%% Apartado e)
+% 
+% Calculamos la transformada de Fourier de la señal anterior y
+% representamos su espectro en el margen de frecuencias de interes.
+
+Yf = (fft(Yn,length(Yn)))/length(Yn);
+f_y = linspace(-fs/2,fs/2,length(Yn));
+figure();
+plot(f_y/1000,fftshift(abs(Yf)));
+title('Transformada de Fourier de Yn')
+xlabel('Frecuencia en KHz')
+ylabel('|Yn(f)|')
+
+%% Apartado f)
+% 
+% Como se puede observar en la transformada de Fourier, la mayores
+% amplitudes se encuentran en frecuencias próximas a cero. Por ello, es donde más energía se concentra.
+% 
+% Es una representación que no muestra la energía que contienen los
+% armónicos según va variando la señal. Debido a esto, recomendamos
+% representarla mediante un espectrograma, ya que muestra lo anterior.
+
+%% Apartado g)
+% 
+% Representamos un histograma que muestre los valores de amplitud de cada
+% muestra de la señal Yn.
+% 
+% Viendo esta gráfica, se reafirma que la mayor parte de muestras, tienen
+% amplitud cercana a cero.
+
+figure()
+histogram(Yn,100);
+title('Histograma de Yn')
+xlabel('Amplitud divida en rangos')
+ylabel('Frecuencia estadística')
+
+%% Apartado h)
+% 
+% Representación en diagrama de cajas de la señal limpiada (Yn). Se puede
+% observar que el rango intercuartílico no es muy amplio, por lo que
+% volvemos, otra vez, a verificar que la gran mayoría de muestrás están muy
+% concentradas en torno a la mediana. La media y mediana se puede observar
+% que es próximo a cero. También cabe destacar que se muestran muchos datos atípicos.
+
+figure()
+boxplot(Yn);
+title('Boxplot de Yn')
+ylabel('Amplitud')
+
+%% Apartado i)
+% 
+% A continuación se muestran los datos estadísticos más relevantes:
+
+disp('Media de Yn: ')
+media = mean(Yn)
+
+disp('Mediana de Yn: ')
+mediana = median(Yn)
+
+disp('Desviación típica de Yn: ')
+desv_tip = std(Yn)
+
+%% Apartado j)
+% 
+% La gran mayoria de datos están muy concentrados respescto de la media
+% (aprox cero). Esto confirma que la gran mayoría de las muestás tienen una
+% amplitud pequeña.
+
+%% Cuantificación uniforme
+%% Apartado a)
+% 
+% Aplicamos el cuantificador, tal y como lo hicimos en la prácctica
+% anterior.
+
+q1 = quantizer('fixed','round','saturate',[7,5]);
+Yq = num2bin(q1,Yn);
+figure();
+plot(t,bin2num(q1,Yq))
+title('Yn cuantificada uniformemente')
+xlabel('Tiempo en segundos')
+ylabel('Yq(t)')
+
+%% Apartado b)
+% 
+% Hemos escogido 5 bits decimales, uno entero y otro de signo (ya que la señal
+% va de -1 a 1, por lo que nos hace falta el signo y un digito entero)
+
+%% Cuantificación no uniforme
+%
+% Utilizamos cuantificación no uniforme para mejorar la precisión de
+% nuestra señal cuantificada, ya que en amplitudes pequeñas (la gran
+% mayoría de nuestra señal)los intervalos de cuantificación se hacen
+% más estrechos para amplitudes bajas.
+
+A = 87.6;
+
+%% Apartado a, b y c)
+% 
+% Hemos implementado el compresor y expansor en una función de Matlab aparte. Como argumentos de entrada
+% recibe primero A (que la hemos fijado anteriormente en el "main") y luego
+% recibe la señal que queremos comprimir. En el expansor, tiene los mismos
+% arguumentos que el compresor.
+% 
+% Para caracterizar estos bloques y apreciar mejor su funcionamiento,
+% creamos un vector de -1:1 y se los pasamos a las funciones. En los plots,
+% se puede ver como en el expansor, las amplitudes cercanas a 0 (eje y),
+% acaparan más rango de amplitud. Sin embargo, el expansor hace todo lo
+% contario, los valores próximos a cero abarcan muy poco rango de amplitud.
+% 
+% Por último se muestra un subplot con la señal original y la señal
+% comprimida y expandida. En esta gráfica se puede observar con más
+% facilidad, cómo las amplitudes pequeñas de la señal original, en el
+% compresor, se han expandido, y en el expansor se han comprimido.
+% 
+% Los nombres de estos bloques pueden ser algo liosos, pero las gráficas
+% muestran fielmente su funcionamiento.
+
+vect = linspace(-1,1,length(t));
+figure()
+subplot(2,1,1)
+plot(t,compresor(A,vect));
+title('Compresor vector -1:1')
+xlabel('Tiempo en segundos')
+ylabel('Amplitud')
+subplot(2,1,2)
+plot(t,expansor(A,vect));
+title('Expansor vector -1:1')
+xlabel('Tiempo en segundos')
+ylabel('Amplitud')
+
+figure()
+subplot(3,1,1)
+plot(t,Yn);
+title('Señal original Yn')
+xlabel('Tiempo en segundos')
+ylabel('Yn(t)')
+subplot(3,1,2)
+plot(t,compresor(A,Yn));
+title('Compresor señal Yn')
+xlabel('Tiempo en segundos')
+ylabel('Yn(t) comprimida')
+subplot(3,1,3)
+plot(t,expansor(A,Yn));
+title('Expansor señal Yn')
+xlabel('Tiempo en segundos')
+ylabel('Yn(t) expandida')
+
+%% Apartado d)
+% 
+% Para cuantificar no uniformemente, primero pasamos la señal por el
+% compresor, luego por el cuantificador uniforme y, por último, por el
+% expansor.
+
+Ycomp = compresor(A,Yn);
+Ycuant = bin2num(q1,num2bin(q1,Ycomp));
+Ynuni = expansor(A,Ycuant);
+figure();
+plot(t,Ynuni);
+title('Cuantificación no unfirme')
+ylabel('Ynuni(t)')
+xlabel('Tiempo en segundos')
+
+%% Analisis resultados
+%% Apartado a)
+% 
+% Reproducimos las tres señales y podemos observar, que al cuantificar, se
+% introduce un leve ruido de fondo (ruido de cuantificación). La señal
+% cuantificada no uniformemente, es levemente más fiel a la señal original (se escucha menos ruido).
+
+Yuni = bin2num(q1,Yq);
+sound(Yn,fs);
+sound(Yuni,fs);
+sound(Ynuni,fs);
+
+%% Apartado b)
+% 
+% En la primera gráfica, hemos representado las tres señales por separado.
+% Debido a esto, no se puede apreciar mucha diferencia hasta que no hacemos
+% zoom. Por ello, en la siguiente gráfica hemos representado un pequño
+% segmento de las señales y las hemos superpuesto. En esta última gráfica
+% se puede apreciar muiy bien como funcionan los distintos codificadores.
+% Es muy visible como el codificador uniforme no es capaz de distinguir
+% niveles de amplitud pequeños, mientras que el no uniforme si los
+% cuantifica con más precisión.
+% 
+% Por último, la tercera gráfica es la misma que la segunda pero con una
+% sección de señal con mayor amplitud. En esta, se puede observar como el
+% detalle que se consigue al cuantificar entre no uniforme y uniforme en
+% amplitudes mas altas, es similar.
+
+figure();
+subplot(3,1,1)
+plot(t,Yn)
+title('Señal original Yn')
+xlabel('Tiempo en segundo')
+ylabel('Yn(t)')
+subplot(3,1,2)
+plot(t,Yuni)
+title('Señal cuantificada uniformemente Yuni')
+xlabel('Tiempo en segundos')
+ylabel('Yuni(t)')
+subplot(3,1,3)
+plot(t,Ynuni)
+title('Señal cuantificada no uniformemente Ynuni')
+xlabel('Tiempo en segundos')
+ylabel('Ynuni(t)')
+
+figure()
+plot(t(14000:15000),Yn(14000:15000))
+title('Comparativa amplitudes pequeñas')
+xlabel('tiempo en segundos')
+ylabel('Amplitud')
+hold on
+plot(t(14000:15000),Yuni(14000:15000))
+hold on
+plot(t(14000:15000),Ynuni(14000:15000))
+legend('Original','Cuant. uniforme','Cuant. no uniforme')
+
+figure()
+plot(t(18000:20000),Yn(18000:20000))
+title('Comparativa amplitudes grandes')
+xlabel('tiempo en segundos')
+ylabel('Amplitud')
+hold on
+plot(t(18000:20000),Yuni(18000:20000))
+hold on
+plot(t(18000:20000),Ynuni(18000:20000))
+legend('Original','Cuant. uniforme','Cuant. no uniforme')
+
+%% Apartado c)
+% 
+% A continuación mostramos los resultados del error cuadrático medio de las
+% señales cuantifiacas respecto de la señal original.
+% 
+% Como nos esperábamos, la cuantificación no uniforme presenta una
+% mejora en términos de error cuadrático medio. Concuerda con nuestra
+% intuición, ya que nos parecía que se escuchaba mejor la señal
+% cuantificada no uniformemente. También concuerda con las gráficas
+% anteriores en las que se puede apreciar que la cuantificación no uniforme
+% es capar de representar mejor la señal original en comparación con la
+% uniforme
+
+disp('ECM con la señal Uniformemente cuantificada')
+disp(ECM(Yn,Yuni))
+
+disp('ECM con la señal no uniformemente cuantificada')
+disp(ECM(Yn,Ynuni))
+
+
+
+    
+##### SOURCE END #####
+--></body></html>
