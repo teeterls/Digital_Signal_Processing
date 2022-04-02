@@ -49,3 +49,8 @@ This method is explained in the following figure (in Spanish):
 For this purpose, a FIR filter (Constrained Equiripple) is designed using the values of the parameters provided.
 
 ### 8. Adaptive filtering using the LMS algorithms
+
+An adaptive filter is built using the Least Mean Squares (LMS) algorithm, which is based on the approximation of the gradient of the error surface, and will allow the ambient noise of an audio signal to be canceled. For this purpose, an audio file is povided.
+
+The blocks diagram of an adaptative system is the following:
+![image](https://user-images.githubusercontent.com/46919127/161384329-9c3401b6-c571-4a6a-818b-3848e9f3b58a.png)
