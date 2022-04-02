@@ -19,6 +19,12 @@ Work with different techniques (decimation, interpolation by an integer factor, 
 sampling of a signal, in the discrete domain, without changing to the analog domain. For this purpose, an audio file .WAV and a low pass filter (.mat file) are provided. 
 
 ### 4. Digital FIR filters
+
+Different techniques will be used (superposition, filter order) to apply FIR filters to a signal, and different concepts of this type of filter will be analyzed. For this purpose, the following data are provided in a .mat file:
+- The amplitude of the signal x(t) (vector x) sampled as a function of the time (vector t)
+- The coefficients bk(vector b) of an FIR filter already design by the professor
+
+Morover, a FIR filter will be designed using a Matlab graphic tool (Filter Design & Analysis Tool)
 ### 5. Digital IIR filters
 
 ### 6. Effects of finite precision on the design of digital filters
